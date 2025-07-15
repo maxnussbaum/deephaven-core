@@ -1,0 +1,414 @@
+package io.deephaven.client.scala
+
+import io.deephaven.api.Selectable
+import io.deephaven.engine.table.Table
+import io.deephaven.engine.testutil.TstUtils._
+import io.deephaven.engine.testutil.testcase.RefreshingTableTestCase
+import io.deephaven.engine.util.TableTools
+import io.deephaven.engine.util.TableTools._
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
+import TypeSafeTableOperations._
+
+import scala.jdk.CollectionConverters._
+
+/**
+ * Scala equivalent of key QueryTableTest.java methods using the type-safe DSL.
+ * 
+ * This test demonstrates how table operations can be expressed using
+ * our Scala DSL with better type safety and more natural syntax compared
+ * to the original Java string-based operations.
+ */
+class QueryTableTestScala extends AnyFunSuite with Matchers {
+
+  test("testView - Basic view operations with DSL") {
+    // Original Java: TableTools.emptyTable(3).view("x = i*2", "y = \"\" + x")
+    val table = TableTools.emptyTable(3).view(
+      "x" := raw("i*2"),
+      "y" := raw("\"\" + x")
+    )
+    
+    table.size shouldBe 3
+    table.hasColumns("x", "y") shouldBe true
+    
+    // Test chained view operations
+    val chainedTable = table.view(
+      "x",
+      "z" := "x" + 1
+    )
+    chainedTable.hasColumns("x", "z") shouldBe true
+    chainedTable.hasColumns("y") shouldBe false
+  }
+
+  test("testView1 - UpdateView vs View comparison") {
+    val baseTable = TableTools.emptyTable(5).update("x" := raw("i"))
+    
+    // Original Java: final Table t1 = t.select("y=x && true");
+    val selectTable = baseTable.select("y" := "x" && true)
+    
+    // Original Java: final Table t2 = t.view("y=x && true");
+    val viewTable = baseTable.view("y" := "x" && true)
+    
+    // Both should have the same structure
+    selectTable.hasColumns("y") shouldBe true
+    viewTable.hasColumns("y") shouldBe true
+    selectTable.size shouldBe viewTable.size
+  }
+
+  test("testUpdateView - Chained update operations") {
+    val table0 = TableTools.emptyTable(3).update("x" := raw("i"))
+    
+    // Original Java: table0.updateView("z = x + 1", "x = z + 1", "t = x - 3")
+    val updated = table0.updateView(
+      "z" := "x" + 1,
+      "x" := "z" + 1,
+      "t" := "x" - 3
+    )
+    
+    updated.hasColumns("x", "z", "t") shouldBe true
+    updated.size shouldBe 3
+  }
+
+  test("testDropColumns - Column removal operations") {
+    val table = testTable(
+      col("Int", 1, 2, 3),
+      col("String", "a", "b", "c"),
+      col("Double", 1.0, 2.0, 3.0)
+    )
+    
+    // Original Java: table.dropColumns("Int")
+    val droppedInt = table.dropColumns("Int")
+    droppedInt.hasColumns("String", "Double") shouldBe true
+    droppedInt.hasColumns("Int") shouldBe false
+    
+    // Drop multiple columns
+    val droppedMultiple = table.dropColumns("Int", "Double")
+    droppedMultiple.hasColumns("String") shouldBe true
+    droppedMultiple.hasColumns("Int", "Double") shouldBe false
+    
+    // Drop no columns (identity)
+    val droppedNone = table.dropColumns()
+    droppedNone.hasColumns("Int", "String", "Double") shouldBe true
+  }
+
+  test("testRenameColumns - Column renaming operations") {
+    val table = testTable(
+      col("Int", 1, 2, 3),
+      col("String", "a", "b", "c")
+    )
+    
+    // Original Java: table.renameColumns("NewInt=Int")
+    val renamed = table.renameColumns("NewInt=Int")
+    renamed.hasColumns("NewInt", "String") shouldBe true
+    renamed.hasColumns("Int") shouldBe false
+    
+    // Test view with renamed columns
+    val viewRenamed = renamed.view("String", "NewInt")
+    viewRenamed.hasColumns("String", "NewInt") shouldBe true
+  }
+
+  test("testReverse - Table reversal operations") {
+    val table = testTable(
+      col("A", 1, 2, 3),
+      col("B", "a", "b", "c")
+    )
+    
+    // Original Java: final Table reversed = table.reverse();
+    val reversed = table.reverse()
+    
+    reversed.size shouldBe table.size
+    reversed.hasColumns("A", "B") shouldBe true
+    
+    // First row of reversed should be last row of original
+    // This is a structural test - actual data comparison would require more setup
+  }
+
+  test("testMoveColumnsUp - Column reordering operations") {
+    val table = testTable(
+      col("A", 1, 2, 3),
+      col("B", "a", "b", "c"),
+      col("C", 1.0, 2.0, 3.0)
+    )
+    
+    // Original Java: table.moveColumnsUp("C")
+    val movedC = table.moveColumnsUp("C")
+    movedC.hasColumns("A", "B", "C") shouldBe true
+    
+    // Original Java: table.moveColumnsUp("C", "B")
+    val movedCB = table.moveColumnsUp("C", "B")
+    movedCB.hasColumns("A", "B", "C") shouldBe true
+  }
+
+  test("testDoubleRangeFilterSimple - Numeric filtering with DSL") {
+    val table = testTable(
+      col("DV", 0.5, 1.0, 1.5, 2.0),
+      col("ID", 1, 2, 3, 4)
+    )
+    
+    // Original Java: Table leq1 = t.where("DV <= 1.0");
+    val leq1 = table.where("DV" <= 1.0)
+    leq1.size shouldBe 2
+    
+    // Original Java: Table geq1 = t.where("DV >= 1.0");  
+    val geq1 = table.where("DV" >= 1.0)
+    geq1.size shouldBe 3
+    
+    // Combined conditions
+    val between = table.where("DV" >= 1.0 && "DV" <= 1.5)
+    between.size shouldBe 2
+  }
+
+  test("testLongRangeFilterSimple - Long filtering with DSL") {
+    val table = testTable(
+      col("LV", 0L, 1L, 2L, 3L),
+      col("ID", 1, 2, 3, 4)
+    )
+    
+    // Original Java: Table leq1 = t.where("LV <= 1");
+    val leq1 = table.where("LV" <= 1L)
+    leq1.size shouldBe 2
+    
+    // Original Java: Table geq1 = t.where("LV >= 1");
+    val geq1 = table.where("LV" >= 1L)
+    geq1.size shouldBe 3
+  }
+
+  test("testStringContainsFilter - String filtering with DSL") {
+    val table = testTable(
+      col("S1", "aab", "bab", "cac", "dab"),
+      col("S2", "Ma", "mb", "Mc", "md"),
+      col("ID", 1, 2, 3, 4)
+    )
+    
+    // Original Java: table.where("S1.contains(`aab`)")
+    val containsAab = table.where(raw("S1.contains(`aab`)"))
+    containsAab.size shouldBe 1
+    
+    // Original Java: table.where("S2.contains(`m`)")
+    val containsM = table.where(raw("S2.contains(`m`)"))
+    containsM.size shouldBe 2
+    
+    // Original Java: table.where("!S2.contains(`ma`)")
+    val notContainsMa = table.where(raw("!S2.contains(`ma`)"))
+    notContainsMa.size shouldBe 4
+    
+    // Original Java: table.where("S2.toLowerCase().contains(`ma`)")
+    val containsMaLower = table.where(raw("S2.toLowerCase().contains(`ma`)"))
+    containsMaLower.size shouldBe 1
+  }
+
+  test("testStaticSelectIntermediateColumn - Complex select operations") {
+    val et = TableTools.emptyTable(5)
+    
+    // Original Java: et.select("A = i").join(et).select("B = A", "C = A + B");
+    val result = et.select("A" := raw("i"))
+      .join(et)
+      .select(
+        "B" := "A",
+        "C" := "A" + "B"
+      )
+    
+    result.hasColumns("B", "C") shouldBe true
+    result.size shouldBe 5
+  }
+
+  test("testComplexFilterCombinations - Advanced DSL filtering") {
+    val table = testTable(
+      col("A", 1, 2, 3, 4, 5),
+      col("B", "x", "y", "z", "w", "v"),
+      col("C", 1.0, 2.0, 3.0, 4.0, 5.0),
+      col("D", null, "data", null, "more", "info")
+    )
+    
+    // Complex filter using DSL
+    val complexFilter = table.where(
+      ("A" > 2 && "A" <= 4) ||
+      ("B" === "x" || "B" === "v") &&
+      "C".isNotNull &&
+      "D".isNotNull
+    )
+    
+    complexFilter.size should be > 0
+    
+    // Using explicit combinators
+    val combinatorFilter = table.where(
+      or(
+        and("A" > 2, "A" <= 4),
+        and("B" === "x", "D".isNotNull)
+      )
+    )
+    
+    combinatorFilter.size should be > 0
+  }
+
+  test("testNullHandling - Null value operations") {
+    val table = testTable(
+      col("A", 1, 2, null, 4),
+      col("B", "a", null, "c", "d"),
+      col("C", 1.0, 2.0, 3.0, null)
+    )
+    
+    // Filter for null values
+    val nullA = table.where("A".isNull)
+    nullA.size shouldBe 1
+    
+    // Filter for non-null values
+    val notNullB = table.where("B".isNotNull)
+    notNullB.size shouldBe 3
+    
+    // Combined null checks
+    val bothNotNull = table.where("A".isNotNull && "B".isNotNull)
+    bothNotNull.size shouldBe 2
+  }
+
+  test("testArithmeticOperations - Mathematical operations in DSL") {
+    val table = testTable(
+      col("X", 1, 2, 3, 4),
+      col("Y", 10, 20, 30, 40)
+    )
+    
+    // Arithmetic operations in updates
+    val calculated = table.update(
+      "Sum" := "X" + "Y",
+      "Diff" := "Y" - "X", 
+      "Product" := "X" * "Y",
+      "Quotient" := "Y" / "X",
+      "Combined" := ("X" + "Y") * 2
+    )
+    
+    calculated.hasColumns("X", "Y", "Sum", "Diff", "Product", "Quotient", "Combined") shouldBe true
+    calculated.size shouldBe 4
+  }
+
+  test("testFunctionCalls - Function usage in DSL") {
+    val table = testTable(
+      col("Values", 1, 4, 9, 16, 25),
+      col("Names", "alice", "bob", "charlie", "david", "eve")
+    )
+    
+    // Function calls in updates
+    val withFunctions = table.update(
+      "SqrtValues" := sqrt("Values"),
+      "AbsValues" := abs("Values"),
+      "UpperNames" := upper("Names"),
+      "NameLength" := length("Names")
+    )
+    
+    withFunctions.hasColumns("SqrtValues", "AbsValues", "UpperNames", "NameLength") shouldBe true
+    withFunctions.size shouldBe 5
+  }
+
+  test("testConditionalExpressions - When/otherwise operations") {
+    val table = testTable(
+      col("Score", 85, 92, 78, 95, 88),
+      col("Name", "Alice", "Bob", "Charlie", "David", "Eve")
+    )
+    
+    // Conditional expressions
+    val graded = table.update(
+      "Grade" := when("Score" >= 90, "A").otherwise(
+        when("Score" >= 80, "B").otherwise("C")
+      ),
+      "Status" := when("Score" >= 85, "Pass").otherwise("Fail")
+    )
+    
+    graded.hasColumns("Grade", "Status") shouldBe true
+    graded.size shouldBe 5
+  }
+
+  test("testGroupingOperations - GroupBy with DSL") {
+    val table = testTable(
+      col("Category", "A", "B", "A", "C", "B", "A"),
+      col("Value", 10, 20, 30, 40, 50, 60),
+      col("Count", 1, 1, 1, 1, 1, 1)
+    )
+    
+    // Group by operations
+    val grouped = table.groupBy("Category")
+    grouped.hasColumns("Category") shouldBe true
+    grouped.size shouldBe 3  // 3 unique categories
+    
+    // Aggregation
+    val aggregated = table.sumBy("Category")
+    aggregated.hasColumns("Category", "Value", "Count") shouldBe true
+    aggregated.size shouldBe 3
+  }
+
+  test("testSortingOperations - Sorting with DSL") {
+    val table = testTable(
+      col("Name", "Charlie", "Alice", "David", "Bob"),
+      col("Age", 25, 30, 20, 35),
+      col("Score", 85, 92, 78, 95)
+    )
+    
+    // Sort by single column
+    val sortedByName = table.sort("Name")
+    sortedByName.size shouldBe 4
+    
+    // Sort by multiple columns
+    val sortedByAgeScore = table.sort("Age", "Score")
+    sortedByAgeScore.size shouldBe 4
+    
+    // Sort descending
+    val sortedDescending = table.sortDescending("Score")
+    sortedDescending.size shouldBe 4
+  }
+
+  test("testFluentQueryBuilder - Complex chained operations") {
+    val table = testTable(
+      col("Product", "A", "B", "C", "A", "B", "C"),
+      col("Region", "North", "South", "North", "South", "North", "South"),
+      col("Sales", 100, 200, 150, 180, 220, 170),
+      col("Profit", 20, 40, 30, 36, 44, 34)
+    )
+    
+    // Complex fluent operation
+    val result = from(table)
+      .where("Sales" > 120 && "Profit" > 25)
+      .update(
+        "Margin" := "Profit" / "Sales",
+        "Category" := when("Sales" > 180, "High").otherwise("Medium")
+      )
+      .view("Product", "Region", "Sales", "Margin", "Category")
+      .groupBy("Region", "Category")
+      .build()
+    
+    result.hasColumns("Region", "Category") shouldBe true
+    result.size should be > 0
+  }
+
+  test("testViewOperationsWithCalculations - View with computed columns") {
+    val table = testTable(
+      col("Base", 10, 20, 30),
+      col("Multiplier", 2, 3, 4)
+    )
+    
+    // View with calculations
+    val calculated = table.view(
+      "Base",
+      "Multiplier", 
+      "Result" := "Base" * "Multiplier",
+      "Incremented" := "Result" + 1,
+      "Description" := raw("\"Result: \" + Result")
+    )
+    
+    calculated.hasColumns("Base", "Multiplier", "Result", "Incremented", "Description") shouldBe true
+    calculated.size shouldBe 3
+  }
+
+  test("testMixedColumnStyles - String and col() usage") {
+    val table = testTable(
+      col("A", 1, 2, 3),
+      col("B", 10, 20, 30)
+    )
+    
+    // Mixed column reference styles
+    val mixed = table.update(
+      "StringStyle" := "A" + "B",                    // String implicit conversion
+      col("ExplicitStyle") := col("A") * col("B")    // Explicit col() calls
+    )
+    
+    mixed.hasColumns("StringStyle", "ExplicitStyle") shouldBe true
+    mixed.size shouldBe 3
+  }
+}

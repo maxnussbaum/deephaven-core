@@ -1,0 +1,277 @@
+package io.deephaven.client.scala
+
+import io.deephaven.engine.table.Table
+import TypeSafeTableOperations._
+import TableOps._
+
+/**
+ * Comprehensive examples demonstrating the type-safe table operations DSL.
+ * 
+ * This shows how to replace string-based expressions with compile-time checked,
+ * type-safe operations that provide better IDE support and error detection.
+ */
+object TypeSafeTableOperationsExample {
+  
+  /**
+   * Example 1: Basic filtering with type-safe expressions
+   * 
+   * Before: table.where("MedianAverageDailyVolume != null && TargetEODDollars > 0")
+   * After:  table.where("MedianAverageDailyVolume".isNotNull && "TargetEODDollars" > 0)
+   */
+  def basicFiltering(table: Table): Table = {
+    table.where("MedianAverageDailyVolume".isNotNull && "TargetEODDollars" > 0)
+  }
+  
+  /**
+   * Example 2: Complex filtering with multiple conditions
+   * 
+   * Before: table.where("(Foo > Bar) || (Foo > Baz) || (isNull(Foo) && !isNull(Bar) && !isNull(Baz))")
+   * After:  Uses both operator precedence and explicit combinators
+   */
+  def complexFiltering(table: Table): Table = {
+    // Using operator precedence (requires careful parentheses)
+    table.where(("Foo" > "Bar") || ("Foo" > "Baz") || ("Foo".isNull && "Bar".isNotNull && "Baz".isNotNull))
+  }
+  
+  /**
+   * Example 3: Alternative complex filtering with explicit combinators
+   */
+  def complexFilteringWithCombinators(table: Table): Table = {
+    table.where(
+      or(
+        "Foo" > "Bar",
+        "Foo" > "Baz",
+        and(
+          "Foo".isNull,
+          "Bar".isNotNull,
+          "Baz".isNotNull
+        )
+      )
+    )
+  }
+  
+  /**
+   * Example 4: Column updates with arithmetic operations
+   * 
+   * Before: table.update("NewColumn = Column1 + Column2", "Ratio = Column1 / Column2")
+   * After:  Uses type-safe arithmetic operators
+   */
+  def columnUpdates(table: Table): Table = {
+    table.update(
+      "NewColumn" := "Column1" + "Column2",
+      "Ratio" := "Column1" / "Column2"
+    )
+  }
+  
+  /**
+   * Example 5: Aggregation functions in updates
+   * 
+   * Before: table.update("MedianVolume = median(AverageDailyVolume)", "TotalValue = sum(Value)")
+   * After:  Uses both method and function syntax
+   */
+  def aggregationUpdates(table: Table): Table = {
+    table.update(
+      "MedianVolume" := "AverageDailyVolume".median(),      // Method syntax
+      "TotalValue" := sum("Value"),                         // Function syntax
+      "MaxPrice" := "Price".max(),                          // Method syntax
+      "MinPrice" := min("Price")                            // Function syntax
+    )
+  }
+  
+  /**
+   * Example 6: View operations with column selection
+   * 
+   * Before: table.view("Column1", "Column2", "NewColumn = Column1 + Column2")
+   * After:  Type-safe column references and assignments
+   */
+  def viewOperations(table: Table): Table = {
+    table.view(
+      "Column1",
+      "Column2",
+      "NewColumn" := "Column1" + "Column2"
+    )
+  }
+  
+  /**
+   * Example 7: Conditional expressions
+   * 
+   * Before: table.update("Status = isNull(Value) ? \"Unknown\" : Value > 100 ? \"High\" : \"Low\"")
+   * After:  Uses when/otherwise construct
+   */
+  def conditionalExpressions(table: Table): Table = {
+    table.update(
+      "Status" := when("Value".isNull, "Unknown")
+        .otherwise(
+          when("Value" > 100, "High").otherwise("Low")
+      )
+    )
+  }
+  
+  /**
+   * Example 8: String and math functions
+   * 
+   * Before: table.update("UpperName = upper(Name)", "AbsValue = abs(Value)", "SqrtValue = sqrt(Value)")
+   * After:  Type-safe function calls
+   */
+  def functionCalls(table: Table): Table = {
+    table.update(
+      "UpperName" := upper("Name"),
+      "AbsValue" := abs("Value"),
+      "SqrtValue" := sqrt("Value"),
+      "PowerValue" := pow("Value", 2)
+    )
+  }
+  
+  /**
+   * Example 9: Date/time operations
+   * 
+   * Before: table.update("Year = year(Date)", "CurrentTime = now()")
+   * After:  Type-safe date functions
+   */
+  def dateTimeOperations(table: Table): Table = {
+    table.update(
+      "Year" := year("Date"),
+      "Month" := month("Date"),
+      "Day" := day("Date"),
+      "CurrentTime" := now()
+    )
+  }
+  
+  /**
+   * Example 10: Method calls on columns
+   * 
+   * Before: table.update("Result = Column.myMethod(Arg1, Arg2)")
+   * After:  Type-safe method syntax
+   */
+  def methodCalls(table: Table): Table = {
+    table.update(
+      "Result" := "Column".method("myMethod", "Arg1", "Arg2")
+    )
+  }
+  
+  /**
+   * Example 11: Fluent query builder for complex operations
+   * 
+   * Demonstrates chaining multiple operations in a readable way
+   */
+  def fluentQueryBuilder(table: Table): Table = {
+    from(table)
+      .where("MedianAverageDailyVolume".isNotNull && "TargetEODDollars" > 0)
+      .update(
+        "MedianVolume" := "AverageDailyVolume".median(),
+        "TotalValue" := "Price" * "Volume"
+      )
+      .view("Symbol", "MedianVolume", "TotalValue")
+      .sort("TotalValue")
+      .head(100)
+      .build()
+  }
+  
+  /**
+   * Example 12: Grouping and sorting operations
+   * 
+   * Before: table.groupBy("Category").sort("Value")
+   * After:  Type-safe column references
+   */
+  def groupingAndSorting(table: Table): Table = {
+    table
+      .groupBy("Category", "Region")
+      .sort("Value")
+  }
+  
+  /**
+   * Example 13: Mixed column reference styles
+   * 
+   * Shows different ways to reference columns - explicit and implicit
+   */
+  def mixedColumnReferences(table: Table): Table = {
+    table.update(
+      "StringBased" := "Column1" + "Column2",                     // String-based (with implicit conversion)
+      col("ExplicitBased") := col("Column3") + col("Column4")      // Explicit col() calls
+    )
+  }
+  
+  /**
+   * Example 14: Raw expressions for complex cases
+   * 
+   * For cases where the DSL doesn't cover specific functionality
+   */
+  def rawExpressions(table: Table): Table = {
+    table.update(
+      "SimpleExpression" := "Column1" + "Column2",
+      "ComplexExpression" := raw("someComplexFunction(Column1, Column2, specificParameter)")
+    )
+  }
+  
+  /**
+   * Example 15: Null handling variations
+   * 
+   * Shows different ways to handle null values
+   */
+  def nullHandling(table: Table): Table = {
+    table.where(
+      and(
+        "Column1".isNotNull,                    // Method syntax
+        isNotNull("Column2"),                   // Function syntax
+        !("Column3".isNull)                     // Negation syntax
+      )
+    )
+  }
+  
+  /**
+   * Example 16: Comparison operations with literals
+   * 
+   * Shows how literals are automatically converted
+   */
+  def literalComparisons(table: Table): Table = {
+    table.where(
+      "IntColumn" > 100 &&                      // Int literal
+      "DoubleColumn" >= 3.14 &&                 // Double literal
+      "StringColumn" === "test" &&              // String literal
+      "BooleanColumn" === true                  // Boolean literal
+    )
+  }
+  
+  /**
+   * Example 17: Complete trading example
+   * 
+   * A realistic example showing a complete trading data analysis
+   */
+  def tradingAnalysis(tickData: Table): Table = {
+    from(tickData)
+      .where(
+        "Price" > 0 &&
+        "Volume" > 0 &&
+        "Symbol".isNotNull
+      )
+      .update(
+        "DollarVolume" := "Price" * "Volume",
+        "PriceChange" := "Price" - "PrevPrice",
+        "PriceChangePercent" := ("Price" - "PrevPrice") / "PrevPrice" * 100
+      )
+      .view(
+        "Symbol",
+        "Price",
+        "Volume",
+        "DollarVolume",
+        "PriceChange",
+        "PriceChangePercent"
+      )
+      .where("DollarVolume" > 1000000)  // Filter for high-value trades
+      .sort("DollarVolume")
+      .tail(50)  // Top 50 by dollar volume
+      .build()
+  }
+  
+  /**
+   * Example 18: Error handling patterns
+   * 
+   * Shows how to handle potential errors in expressions
+   */
+  def errorHandling(table: Table): Table = {
+    table.update(
+      "SafeRatio" := when("Denominator" === 0, 0.0).otherwise("Numerator" / "Denominator"),
+      "SafeLog" := when("Value" > 0, log("Value")).otherwise(Double.NaN)
+    )
+  }
+}

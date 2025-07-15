@@ -24,6 +24,7 @@ String[] mods = [
         'authentication',
         'cpp-client',
         'R',
+        'scala-client',
 ]
 
         // new web projects; these modules are intended to form a complete, modular web application,
@@ -382,6 +383,9 @@ project(':jpy-integration').projectDir = file('py/jpy-integration')
 
 include(':py-client')
 project(':py-client').projectDir = file('py/client')
+
+include(':scala-client')
+project(':scala-client').projectDir = file('scala-client')
 
 include(':py-client-ticking')
 project(':py-client-ticking').projectDir = file('py/client-ticking')
