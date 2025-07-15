@@ -18,6 +18,7 @@ configurations {
   python {}
   go {}
   protoDocs {}
+  scala {}
 }
 
 dependencies {
@@ -93,6 +94,9 @@ artifacts {
     builtBy generateProtobuf
   }
   protoDocs(protoOutputDir.get().dir('proto-doc')) {
+    builtBy generateProtobuf
+  }
+  scala(protoOutputDir.get().dir('scala')) {
     builtBy generateProtobuf
   }
 }

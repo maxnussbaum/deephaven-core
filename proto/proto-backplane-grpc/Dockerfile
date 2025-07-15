@@ -4,12 +4,22 @@ COPY src/main/proto /includes
 
 COPY dependencies /dependencies
 
+ARG RELEASE=https://github.com/scalapb/ScalaPB/releases/download/v1.0.0-alpha.1/protoc-gen-scala-1.0.0-alpha.1-linux-x86_64.zip
+RUN wget --quiet $RELEASE \
+    && unzip protoc*.zip -d /usr/local/bin \
+    && rm protoc*.zip
+
+
+RUN ls -lh /usr/local/bin/protoc-gen-scala
+#RUN #file /usr/local/bin/protoc-gen-scala
+
 RUN set -eux; \
   mkdir -p /generated/java; \
   mkdir -p /generated/js; \
   mkdir -p /generated/go; \
   mkdir -p /generated/python; \
   mkdir -p /generated/cpp; \
+  mkdir -p /generated/scala; \
   mkdir -p /generated/proto-doc/single-html; \
   mkdir -p /generated/proto-doc/single-md; \
   mkdir -p /generated/proto-doc/multi-html; \
@@ -40,6 +50,21 @@ RUN set -eux; \
     -I/includes \
     /dependencies/BrowserFlight.proto \
     /dependencies/Flight.proto \
+    /includes/deephaven_core/proto/ticket.proto \
+    /includes/deephaven_core/proto/console.proto \
+    /includes/deephaven_core/proto/object.proto \
+    /includes/deephaven_core/proto/session.proto \
+    /includes/deephaven_core/proto/table.proto \
+    /includes/deephaven_core/proto/application.proto \
+    /includes/deephaven_core/proto/inputtable.proto \
+    /includes/deephaven_core/proto/partitionedtable.proto \
+    /includes/deephaven_core/proto/config.proto \
+    /includes/deephaven_core/proto/hierarchicaltable.proto \
+    /includes/deephaven_core/proto/storage.proto; \
+  /opt/protoc/bin/protoc \
+    --plugin=protoc-gen-scala=/usr/local/bin/protoc-gen-scala \
+    --scala_out=grpc:/generated/scala \
+    -I/includes \
     /includes/deephaven_core/proto/ticket.proto \
     /includes/deephaven_core/proto/console.proto \
     /includes/deephaven_core/proto/object.proto \
