@@ -19,23 +19,23 @@ configurations {
 //evaluationDependsOn Docker.registryProject('scala')
 
 dependencies {
-    implementation 'org.scala-lang:scala3-library:3.7.1'
-    implementation 'com.thesamet.scalapb:scalapb-runtime_3.13:0.11.19'
-    implementation 'com.thesamet.scalapb:scalapb-runtime-grpc_3.13:0.11.19'
+    implementation 'org.scala-lang:scala3-library_3:3.7.1'
+    implementation 'com.thesamet.scalapb:scalapb-runtime_3:0.11.19'
+    implementation 'com.thesamet.scalapb:scalapb-runtime-grpc_3:0.11.19'
     implementation 'io.grpc:grpc-netty:1.73.0'
     implementation 'io.grpc:grpc-protobuf:1.73.0'
     implementation 'io.grpc:grpc-stub:1.73.0'
 
 //    api project(':qst-type')
-//    api project(':table-api')
+    api project(':table-api')
 
     api project(':engine-api')
     implementation project(':engine-table')
 
     scala project(path: ':proto:proto-backplane-grpc', configuration: 'scala')
 
-    testImplementation 'org.scalatest:scalatest_3.13:3.2.19'
-    testImplementation 'org.scalatest:scalatest-funsuite_3.13:3.2.19'
+    testImplementation 'org.scalatest:scalatest_3:3.2.19'
+    testImplementation 'org.scalatest:scalatest-funsuite_3:3.2.19'
     testImplementation 'junit:junit:4.13.2'
 }
 
