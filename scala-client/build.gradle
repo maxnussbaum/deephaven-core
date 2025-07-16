@@ -20,8 +20,8 @@ configurations {
 
 dependencies {
     implementation 'org.scala-lang:scala3-library_3:3.7.1'
-    implementation 'com.thesamet.scalapb:scalapb-runtime_3:0.11.19'
-    implementation 'com.thesamet.scalapb:scalapb-runtime-grpc_3:0.11.19'
+    implementation 'com.thesamet.scalapb:scalapb-runtime_3:0.11.17'
+    implementation 'com.thesamet.scalapb:scalapb-runtime-grpc_3:0.11.17'
     implementation 'io.grpc:grpc-netty:1.73.0'
     implementation 'io.grpc:grpc-protobuf:1.73.0'
     implementation 'io.grpc:grpc-stub:1.73.0'

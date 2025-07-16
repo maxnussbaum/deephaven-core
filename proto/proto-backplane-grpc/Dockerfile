@@ -4,7 +4,7 @@ COPY src/main/proto /includes
 
 COPY dependencies /dependencies
 
-ARG RELEASE=https://github.com/scalapb/ScalaPB/releases/download/v1.0.0-alpha.1/protoc-gen-scala-1.0.0-alpha.1-linux-x86_64.zip
+ARG RELEASE=https://github.com/scalapb/ScalaPB/releases/download/v0.11.17/protoc-gen-scala-0.11.17-linux-x86_64.zip
 RUN wget --quiet $RELEASE \
     && unzip protoc*.zip -d /usr/local/bin \
     && rm protoc*.zip
