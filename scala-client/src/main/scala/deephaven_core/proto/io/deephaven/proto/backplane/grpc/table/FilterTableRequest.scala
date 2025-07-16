@@ -13,8 +13,8 @@ final case class FilterTableRequest(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[FilterTableRequest] {
     @transient
-    private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-    private[this] def __computeSerializedSize(): _root_.scala.Int = {
+    private var __serializedSizeMemoized: _root_.scala.Int = 0
+    private def __computeSerializedSize(): _root_.scala.Int = {
       var __size = 0
       if (resultId.isDefined) {
         val __value = resultId.get
@@ -137,8 +137,8 @@ object FilterTableRequest extends scalapb.GeneratedMessageCompanion[io.deephaven
   }
   def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = TableProto.javaDescriptor.getMessageTypes().get(40)
   def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = TableProto.scalaDescriptor.messages(40)
-  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-    var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+    var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
     (__number: @_root_.scala.unchecked) match {
       case 1 => __out = io.deephaven.proto.backplane.grpc.ticket.Ticket
       case 2 => __out = io.deephaven.proto.backplane.grpc.table.TableReference
@@ -146,8 +146,8 @@ object FilterTableRequest extends scalapb.GeneratedMessageCompanion[io.deephaven
     }
     __out
   }
-  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
   lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.FilterTableRequest(
     resultId = _root_.scala.None,
     sourceId = _root_.scala.None,

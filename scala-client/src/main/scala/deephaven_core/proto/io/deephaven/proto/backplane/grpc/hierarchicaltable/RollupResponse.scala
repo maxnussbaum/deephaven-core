@@ -13,8 +13,8 @@ final case class RollupResponse(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[RollupResponse] {
     @transient
-    private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-    private[this] def __computeSerializedSize(): _root_.scala.Int = {
+    private var __serializedSizeMemoized: _root_.scala.Int = 0
+    private def __computeSerializedSize(): _root_.scala.Int = {
       var __size = 0
       __size += unknownFields.serializedSize
       __size
@@ -69,9 +69,9 @@ object RollupResponse extends scalapb.GeneratedMessageCompanion[io.deephaven.pro
   }
   def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = HierarchicaltableProto.javaDescriptor.getMessageTypes().get(1)
   def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = HierarchicaltableProto.scalaDescriptor.messages(1)
-  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
   lazy val defaultInstance = io.deephaven.proto.backplane.grpc.hierarchicaltable.RollupResponse(
   )
   implicit class RollupResponseLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, io.deephaven.proto.backplane.grpc.hierarchicaltable.RollupResponse]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, io.deephaven.proto.backplane.grpc.hierarchicaltable.RollupResponse](_l) {

@@ -23,8 +23,8 @@ final case class GetTableRequest(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[GetTableRequest] {
     @transient
-    private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-    private[this] def __computeSerializedSize(): _root_.scala.Int = {
+    private var __serializedSizeMemoized: _root_.scala.Int = 0
+    private def __computeSerializedSize(): _root_.scala.Int = {
       var __size = 0
       if (partitionedTable.isDefined) {
         val __value = partitionedTable.get
@@ -170,8 +170,8 @@ object GetTableRequest extends scalapb.GeneratedMessageCompanion[io.deephaven.pr
   }
   def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = PartitionedtableProto.javaDescriptor.getMessageTypes().get(3)
   def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = PartitionedtableProto.scalaDescriptor.messages(3)
-  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-    var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+    var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
     (__number: @_root_.scala.unchecked) match {
       case 1 => __out = io.deephaven.proto.backplane.grpc.ticket.Ticket
       case 2 => __out = io.deephaven.proto.backplane.grpc.ticket.Ticket
@@ -179,8 +179,8 @@ object GetTableRequest extends scalapb.GeneratedMessageCompanion[io.deephaven.pr
     }
     __out
   }
-  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = {
+  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = {
     (__fieldNumber: @_root_.scala.unchecked) match {
       case 5 => io.deephaven.proto.backplane.grpc.partitionedtable.GetTableRequest.UniqueBehavior
     }

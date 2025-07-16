@@ -16,8 +16,8 @@ final case class CreateInputTableRequest(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[CreateInputTableRequest] {
     @transient
-    private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-    private[this] def __computeSerializedSize(): _root_.scala.Int = {
+    private var __serializedSizeMemoized: _root_.scala.Int = 0
+    private def __computeSerializedSize(): _root_.scala.Int = {
       var __size = 0
       if (resultId.isDefined) {
         val __value = resultId.get
@@ -156,8 +156,8 @@ object CreateInputTableRequest extends scalapb.GeneratedMessageCompanion[io.deep
   }
   def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = TableProto.javaDescriptor.getMessageTypes().get(60)
   def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = TableProto.scalaDescriptor.messages(60)
-  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-    var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+    var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
     (__number: @_root_.scala.unchecked) match {
       case 1 => __out = io.deephaven.proto.backplane.grpc.ticket.Ticket
       case 2 => __out = io.deephaven.proto.backplane.grpc.table.TableReference
@@ -165,11 +165,11 @@ object CreateInputTableRequest extends scalapb.GeneratedMessageCompanion[io.deep
     }
     __out
   }
-  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] =
-    Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
+  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] =
+    Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]](
       _root_.io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind
     )
-  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
   lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest(
     resultId = _root_.scala.None,
     kind = _root_.scala.None,
@@ -214,8 +214,8 @@ object CreateInputTableRequest extends scalapb.GeneratedMessageCompanion[io.deep
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[InputTableKind] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         if (kind.inMemoryAppendOnly.isDefined) {
           val __value = kind.inMemoryAppendOnly.get
@@ -333,8 +333,8 @@ object CreateInputTableRequest extends scalapb.GeneratedMessageCompanion[io.deep
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.javaDescriptor.getNestedTypes().get(0)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.scalaDescriptor.nestedMessages(0)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-      var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+      var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
       (__number: @_root_.scala.unchecked) match {
         case 1 => __out = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.InMemoryAppendOnly
         case 2 => __out = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.InMemoryKeyBacked
@@ -342,13 +342,13 @@ object CreateInputTableRequest extends scalapb.GeneratedMessageCompanion[io.deep
       }
       __out
     }
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] =
-      Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] =
+      Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]](
         _root_.io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.InMemoryAppendOnly,
         _root_.io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.InMemoryKeyBacked,
         _root_.io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.Blink
       )
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
     lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind(
       kind = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.Kind.Empty
     )
@@ -401,8 +401,8 @@ object CreateInputTableRequest extends scalapb.GeneratedMessageCompanion[io.deep
         unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
         ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[InMemoryAppendOnly] {
         @transient
-        private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-        private[this] def __computeSerializedSize(): _root_.scala.Int = {
+        private var __serializedSizeMemoized: _root_.scala.Int = 0
+        private def __computeSerializedSize(): _root_.scala.Int = {
           var __size = 0
           __size += unknownFields.serializedSize
           __size
@@ -457,9 +457,9 @@ object CreateInputTableRequest extends scalapb.GeneratedMessageCompanion[io.deep
       }
       def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.javaDescriptor.getNestedTypes().get(0)
       def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.scalaDescriptor.nestedMessages(0)
-      def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-      lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-      def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+      def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+      lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+      def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
       lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.InMemoryAppendOnly(
       )
       implicit class InMemoryAppendOnlyLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.InMemoryAppendOnly]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.InMemoryAppendOnly](_l) {
@@ -478,8 +478,8 @@ object CreateInputTableRequest extends scalapb.GeneratedMessageCompanion[io.deep
         unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
         ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[InMemoryKeyBacked] {
         @transient
-        private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-        private[this] def __computeSerializedSize(): _root_.scala.Int = {
+        private var __serializedSizeMemoized: _root_.scala.Int = 0
+        private def __computeSerializedSize(): _root_.scala.Int = {
           var __size = 0
           keyColumns.foreach { __item =>
             val __value = __item
@@ -560,9 +560,9 @@ object CreateInputTableRequest extends scalapb.GeneratedMessageCompanion[io.deep
       }
       def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.javaDescriptor.getNestedTypes().get(1)
       def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.scalaDescriptor.nestedMessages(1)
-      def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-      lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-      def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+      def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+      lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+      def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
       lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.InMemoryKeyBacked(
         keyColumns = _root_.scala.Seq.empty
       )
@@ -583,8 +583,8 @@ object CreateInputTableRequest extends scalapb.GeneratedMessageCompanion[io.deep
         unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
         ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[Blink] {
         @transient
-        private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-        private[this] def __computeSerializedSize(): _root_.scala.Int = {
+        private var __serializedSizeMemoized: _root_.scala.Int = 0
+        private def __computeSerializedSize(): _root_.scala.Int = {
           var __size = 0
           __size += unknownFields.serializedSize
           __size
@@ -639,9 +639,9 @@ object CreateInputTableRequest extends scalapb.GeneratedMessageCompanion[io.deep
       }
       def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.javaDescriptor.getNestedTypes().get(2)
       def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.scalaDescriptor.nestedMessages(2)
-      def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-      lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-      def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+      def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+      lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+      def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
       lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.Blink(
       )
       implicit class BlinkLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.Blink]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, io.deephaven.proto.backplane.grpc.table.CreateInputTableRequest.InputTableKind.Blink](_l) {

@@ -11,8 +11,8 @@ final case class Aggregation(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[Aggregation] {
     @transient
-    private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-    private[this] def __computeSerializedSize(): _root_.scala.Int = {
+    private var __serializedSizeMemoized: _root_.scala.Int = 0
+    private def __computeSerializedSize(): _root_.scala.Int = {
       var __size = 0
       if (`type`.columns.isDefined) {
         val __value = `type`.columns.get
@@ -198,8 +198,8 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
   }
   def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = TableProto.javaDescriptor.getMessageTypes().get(37)
   def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = TableProto.scalaDescriptor.messages(37)
-  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-    var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+    var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
     (__number: @_root_.scala.unchecked) match {
       case 1 => __out = io.deephaven.proto.backplane.grpc.table.Aggregation.AggregationColumns
       case 2 => __out = io.deephaven.proto.backplane.grpc.table.Aggregation.AggregationCount
@@ -211,8 +211,8 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
     }
     __out
   }
-  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] =
-    Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
+  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] =
+    Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]](
       _root_.io.deephaven.proto.backplane.grpc.table.Aggregation.AggregationColumns,
       _root_.io.deephaven.proto.backplane.grpc.table.Aggregation.AggregationCount,
       _root_.io.deephaven.proto.backplane.grpc.table.Aggregation.AggregationCountWhere,
@@ -220,7 +220,7 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
       _root_.io.deephaven.proto.backplane.grpc.table.Aggregation.AggregationPartition,
       _root_.io.deephaven.proto.backplane.grpc.table.Aggregation.AggregationFormula
     )
-  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
   lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.Aggregation(
     `type` = io.deephaven.proto.backplane.grpc.table.Aggregation.Type.Empty
   )
@@ -309,8 +309,8 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[AggregationColumns] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         if (spec.isDefined) {
           val __value = spec.get
@@ -411,15 +411,15 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.Aggregation.javaDescriptor.getNestedTypes().get(0)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.Aggregation.scalaDescriptor.nestedMessages(0)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-      var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+      var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
       (__number: @_root_.scala.unchecked) match {
         case 1 => __out = io.deephaven.proto.backplane.grpc.table.AggSpec
       }
       __out
     }
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
     lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.Aggregation.AggregationColumns(
       spec = _root_.scala.None,
       matchPairs = _root_.scala.Seq.empty
@@ -450,8 +450,8 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[AggregationCount] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         
         {
@@ -537,9 +537,9 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.Aggregation.javaDescriptor.getNestedTypes().get(1)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.Aggregation.scalaDescriptor.nestedMessages(1)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
     lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.Aggregation.AggregationCount(
       columnName = ""
     )
@@ -565,8 +565,8 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[AggregationCountWhere] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         
         {
@@ -671,9 +671,9 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.Aggregation.javaDescriptor.getNestedTypes().get(2)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.Aggregation.scalaDescriptor.nestedMessages(2)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
     lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.Aggregation.AggregationCountWhere(
       columnName = "",
       filters = _root_.scala.Seq.empty
@@ -700,8 +700,8 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[AggregationRowKey] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         
         {
@@ -787,9 +787,9 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.Aggregation.javaDescriptor.getNestedTypes().get(3)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.Aggregation.scalaDescriptor.nestedMessages(3)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
     lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.Aggregation.AggregationRowKey(
       columnName = ""
     )
@@ -812,8 +812,8 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[AggregationPartition] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         
         {
@@ -923,9 +923,9 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.Aggregation.javaDescriptor.getNestedTypes().get(4)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.Aggregation.scalaDescriptor.nestedMessages(4)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
     lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.Aggregation.AggregationPartition(
       columnName = "",
       includeGroupByColumns = false
@@ -952,8 +952,8 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[AggregationFormula] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         if (selectable.isDefined) {
           val __value = selectable.get
@@ -1035,15 +1035,15 @@ object Aggregation extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.Aggregation.javaDescriptor.getNestedTypes().get(5)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.Aggregation.scalaDescriptor.nestedMessages(5)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-      var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+      var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
       (__number: @_root_.scala.unchecked) match {
         case 1 => __out = io.deephaven.proto.backplane.grpc.table.Selectable
       }
       __out
     }
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
     lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.Aggregation.AggregationFormula(
       selectable = _root_.scala.None
     )

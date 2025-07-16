@@ -7,8 +7,8 @@ package io.deephaven.proto.backplane.grpc.storage
 
 object StorageProto extends _root_.scalapb.GeneratedFileObject {
   lazy val dependencies: Seq[_root_.scalapb.GeneratedFileObject] = Seq.empty
-  lazy val messagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] =
-    Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
+  lazy val messagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] =
+    Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]](
       io.deephaven.proto.backplane.grpc.storage.ListItemsRequest,
       io.deephaven.proto.backplane.grpc.storage.ItemInfo,
       io.deephaven.proto.backplane.grpc.storage.ListItemsResponse,

@@ -19,12 +19,12 @@ import scala.jdk.CollectionConverters._
  */
 class ExpressionTestScala extends AnyFunSuite with Matchers {
 
-  val FOO = "Foo"
-  val BAR = "Bar"
-  val BAZ = "Baz"
+  val FOO = col("Foo")
+  val BAR = col("Bar")
+  val BAZ = col("Baz")
 
   private def expressionCount(): Int = {
-    val methods = classOf[Expression.Visitor[_]].getMethods
+    val methods = classOf[Expression.Visitor[?]].getMethods
     methods.count(method => 
       method.getName == "visit" && 
       method.getParameterCount == 1 &&
@@ -107,7 +107,7 @@ class ExpressionTestScala extends AnyFunSuite with Matchers {
   /**
    * Calls every single visit method of visitor with a null object.
    */
-  def visitAll(visitor: Expression.Visitor[_]): Unit = {
+  def visitAll(visitor: Expression.Visitor[?]): Unit = {
     visitor.visit(null.asInstanceOf[Literal])
     visitor.visit(null.asInstanceOf[ColumnName])
     visitor.visit(null.asInstanceOf[Filter])
@@ -154,7 +154,7 @@ class ExpressionTestScala extends AnyFunSuite with Matchers {
     def of(): List[Expression] = {
       val visitor = Examples
       visitAll(visitor)
-      visitor.out.toList
+      visitor.out.asScala.toList
     }
 
     private val out = new ArrayList[Expression]()

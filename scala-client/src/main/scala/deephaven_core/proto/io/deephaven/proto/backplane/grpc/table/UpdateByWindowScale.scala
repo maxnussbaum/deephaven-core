@@ -13,8 +13,8 @@ final case class UpdateByWindowScale(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[UpdateByWindowScale] {
     @transient
-    private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-    private[this] def __computeSerializedSize(): _root_.scala.Int = {
+    private var __serializedSizeMemoized: _root_.scala.Int = 0
+    private def __computeSerializedSize(): _root_.scala.Int = {
       var __size = 0
       if (`type`.ticks.isDefined) {
         val __value = `type`.ticks.get
@@ -115,20 +115,20 @@ object UpdateByWindowScale extends scalapb.GeneratedMessageCompanion[io.deephave
   }
   def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = TableProto.javaDescriptor.getMessageTypes().get(11)
   def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = TableProto.scalaDescriptor.messages(11)
-  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-    var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+    var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
     (__number: @_root_.scala.unchecked) match {
       case 1 => __out = io.deephaven.proto.backplane.grpc.table.UpdateByWindowScale.UpdateByWindowTicks
       case 2 => __out = io.deephaven.proto.backplane.grpc.table.UpdateByWindowScale.UpdateByWindowTime
     }
     __out
   }
-  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] =
-    Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
+  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] =
+    Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]](
       _root_.io.deephaven.proto.backplane.grpc.table.UpdateByWindowScale.UpdateByWindowTicks,
       _root_.io.deephaven.proto.backplane.grpc.table.UpdateByWindowScale.UpdateByWindowTime
     )
-  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
   lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.UpdateByWindowScale(
     `type` = io.deephaven.proto.backplane.grpc.table.UpdateByWindowScale.Type.Empty
   )
@@ -171,8 +171,8 @@ object UpdateByWindowScale extends scalapb.GeneratedMessageCompanion[io.deephave
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[UpdateByWindowTicks] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         
         {
@@ -258,9 +258,9 @@ object UpdateByWindowScale extends scalapb.GeneratedMessageCompanion[io.deephave
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.UpdateByWindowScale.javaDescriptor.getNestedTypes().get(0)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.UpdateByWindowScale.scalaDescriptor.nestedMessages(0)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
     lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.UpdateByWindowScale.UpdateByWindowTicks(
       ticks = 0.0
     )
@@ -283,8 +283,8 @@ object UpdateByWindowScale extends scalapb.GeneratedMessageCompanion[io.deephave
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[UpdateByWindowTime] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         
         {
@@ -405,9 +405,9 @@ object UpdateByWindowScale extends scalapb.GeneratedMessageCompanion[io.deephave
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.UpdateByWindowScale.javaDescriptor.getNestedTypes().get(1)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.grpc.table.UpdateByWindowScale.scalaDescriptor.nestedMessages(1)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
     lazy val defaultInstance = io.deephaven.proto.backplane.grpc.table.UpdateByWindowScale.UpdateByWindowTime(
       column = "",
       window = io.deephaven.proto.backplane.grpc.table.UpdateByWindowScale.UpdateByWindowTime.Window.Empty

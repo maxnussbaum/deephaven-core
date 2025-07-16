@@ -10,8 +10,8 @@ object PartitionedtableProto extends _root_.scalapb.GeneratedFileObject {
     io.deephaven.proto.backplane.grpc.table.TableProto,
     io.deephaven.proto.backplane.grpc.ticket.TicketProto
   )
-  lazy val messagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] =
-    Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
+  lazy val messagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] =
+    Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]](
       io.deephaven.proto.backplane.grpc.partitionedtable.PartitionByRequest,
       io.deephaven.proto.backplane.grpc.partitionedtable.PartitionByResponse,
       io.deephaven.proto.backplane.grpc.partitionedtable.MergeRequest,

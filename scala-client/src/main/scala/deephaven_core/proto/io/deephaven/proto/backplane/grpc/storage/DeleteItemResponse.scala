@@ -10,8 +10,8 @@ final case class DeleteItemResponse(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[DeleteItemResponse] {
     @transient
-    private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-    private[this] def __computeSerializedSize(): _root_.scala.Int = {
+    private var __serializedSizeMemoized: _root_.scala.Int = 0
+    private def __computeSerializedSize(): _root_.scala.Int = {
       var __size = 0
       __size += unknownFields.serializedSize
       __size
@@ -66,9 +66,9 @@ object DeleteItemResponse extends scalapb.GeneratedMessageCompanion[io.deephaven
   }
   def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = StorageProto.javaDescriptor.getMessageTypes().get(12)
   def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = StorageProto.scalaDescriptor.messages(12)
-  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
   lazy val defaultInstance = io.deephaven.proto.backplane.grpc.storage.DeleteItemResponse(
   )
   implicit class DeleteItemResponseLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, io.deephaven.proto.backplane.grpc.storage.DeleteItemResponse]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, io.deephaven.proto.backplane.grpc.storage.DeleteItemResponse](_l) {

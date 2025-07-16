@@ -23,8 +23,8 @@ final case class ItemInfo(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[ItemInfo] {
     @transient
-    private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-    private[this] def __computeSerializedSize(): _root_.scala.Int = {
+    private var __serializedSizeMemoized: _root_.scala.Int = 0
+    private def __computeSerializedSize(): _root_.scala.Int = {
       var __size = 0
       
       {
@@ -176,9 +176,9 @@ object ItemInfo extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.bac
   }
   def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = StorageProto.javaDescriptor.getMessageTypes().get(1)
   def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = StorageProto.scalaDescriptor.messages(1)
-  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = {
+  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = {
     (__fieldNumber: @_root_.scala.unchecked) match {
       case 2 => io.deephaven.proto.backplane.grpc.storage.ItemType
     }

@@ -18,8 +18,8 @@ final case class FigureDescriptor(
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[FigureDescriptor] {
     @transient
-    private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-    private[this] def __computeSerializedSize(): _root_.scala.Int = {
+    private var __serializedSizeMemoized: _root_.scala.Int = 0
+    private def __computeSerializedSize(): _root_.scala.Int = {
       var __size = 0
       if (title.isDefined) {
         val __value = title.get
@@ -259,15 +259,15 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
   }
   def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = ConsoleProto.javaDescriptor.getMessageTypes().get(43)
   def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = ConsoleProto.scalaDescriptor.messages(43)
-  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-    var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+    var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
     (__number: @_root_.scala.unchecked) match {
       case 10 => __out = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.ChartDescriptor
     }
     __out
   }
-  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] =
-    Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
+  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] =
+    Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]](
       _root_.io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.ChartDescriptor,
       _root_.io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.SeriesDescriptor,
       _root_.io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.MultiSeriesDescriptor,
@@ -280,7 +280,7 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       _root_.io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.SourceDescriptor,
       _root_.io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.OneClickDescriptor
     )
-  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
   lazy val defaultInstance = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor(
     title = _root_.scala.None,
     titleFont = "",
@@ -630,8 +630,8 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[ChartDescriptor] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         
         {
@@ -1038,8 +1038,8 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.javaDescriptor.getNestedTypes().get(0)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.scalaDescriptor.nestedMessages(0)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-      var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+      var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
       (__number: @_root_.scala.unchecked) match {
         case 3 => __out = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.SeriesDescriptor
         case 4 => __out = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.MultiSeriesDescriptor
@@ -1047,8 +1047,8 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       }
       __out
     }
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = {
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = {
       (__fieldNumber: @_root_.scala.unchecked) match {
         case 6 => io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.ChartDescriptor.ChartType
       }
@@ -1242,8 +1242,8 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[SeriesDescriptor] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         
         {
@@ -1602,15 +1602,15 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.javaDescriptor.getNestedTypes().get(1)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.scalaDescriptor.nestedMessages(1)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-      var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+      var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
       (__number: @_root_.scala.unchecked) match {
         case 15 => __out = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.SourceDescriptor
       }
       __out
     }
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = {
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = {
       (__fieldNumber: @_root_.scala.unchecked) match {
         case 1 => io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.SeriesPlotStyle
       }
@@ -1720,8 +1720,8 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[MultiSeriesDescriptor] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         
         {
@@ -2072,8 +2072,8 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.javaDescriptor.getNestedTypes().get(2)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.scalaDescriptor.nestedMessages(2)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-      var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+      var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
       (__number: @_root_.scala.unchecked) match {
         case 3 => __out = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.StringMapWithDefault
         case 4 => __out = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.StringMapWithDefault
@@ -2090,8 +2090,8 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       }
       __out
     }
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = {
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = {
       (__fieldNumber: @_root_.scala.unchecked) match {
         case 1 => io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.SeriesPlotStyle
       }
@@ -2195,8 +2195,8 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[StringMapWithDefault] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         if (defaultString.isDefined) {
           val __value = defaultString.get
@@ -2314,9 +2314,9 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.javaDescriptor.getNestedTypes().get(3)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.scalaDescriptor.nestedMessages(3)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
     lazy val defaultInstance = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.StringMapWithDefault(
       defaultString = _root_.scala.None,
       keys = _root_.scala.Seq.empty,
@@ -2350,12 +2350,12 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       values: _root_.scala.Seq[_root_.scala.Double] = _root_.scala.Seq.empty,
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[DoubleMapWithDefault] {
-      private[this] def valuesSerializedSize = {
+      private def valuesSerializedSize = {
         8 * values.size
       }
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         if (defaultDouble.isDefined) {
           val __value = defaultDouble.get
@@ -2482,9 +2482,9 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.javaDescriptor.getNestedTypes().get(4)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.scalaDescriptor.nestedMessages(4)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
     lazy val defaultInstance = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.DoubleMapWithDefault(
       defaultDouble = _root_.scala.None,
       keys = _root_.scala.Seq.empty,
@@ -2518,12 +2518,12 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       values: _root_.scala.Seq[_root_.scala.Boolean] = _root_.scala.Seq.empty,
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[BoolMapWithDefault] {
-      private[this] def valuesSerializedSize = {
+      private def valuesSerializedSize = {
         1 * values.size
       }
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         if (defaultBool.isDefined) {
           val __value = defaultBool.get
@@ -2650,9 +2650,9 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.javaDescriptor.getNestedTypes().get(5)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.scalaDescriptor.nestedMessages(5)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
     lazy val defaultInstance = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BoolMapWithDefault(
       defaultBool = _root_.scala.None,
       keys = _root_.scala.Seq.empty,
@@ -2704,12 +2704,12 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       businessCalendarDescriptor: _root_.scala.Option[io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor] = _root_.scala.None,
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[AxisDescriptor] {
-      private[this] def majorTickLocationsSerializedSize = {
+      private def majorTickLocationsSerializedSize = {
         8 * majorTickLocations.size
       }
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         
         {
@@ -3263,15 +3263,15 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.javaDescriptor.getNestedTypes().get(6)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.scalaDescriptor.nestedMessages(6)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-      var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+      var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
       (__number: @_root_.scala.unchecked) match {
         case 21 => __out = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor
       }
       __out
     }
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = {
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = {
       (__fieldNumber: @_root_.scala.unchecked) match {
         case 2 => io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.AxisDescriptor.AxisFormatType
         case 3 => io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.AxisDescriptor.AxisType
@@ -3582,7 +3582,7 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       holidays: _root_.scala.Seq[io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.Holiday] = _root_.scala.Seq.empty,
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[BusinessCalendarDescriptor] {
-      private[this] def businessDaysSerializedSize = {
+      private def businessDaysSerializedSize = {
         if (__businessDaysSerializedSizeField == 0) __businessDaysSerializedSizeField = {
           var __s: _root_.scala.Int = 0
           businessDays.foreach(__i => __s += _root_.com.google.protobuf.CodedOutputStream.computeEnumSizeNoTag(__i.value))
@@ -3590,10 +3590,10 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
         }
         __businessDaysSerializedSizeField
       }
-      @transient private[this] var __businessDaysSerializedSizeField: _root_.scala.Int = 0
+      @transient private var __businessDaysSerializedSizeField: _root_.scala.Int = 0
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         
         {
@@ -3649,7 +3649,7 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
         if (businessDays.nonEmpty) {
           _output__.writeTag(3, 2)
           _output__.writeUInt32NoTag(businessDaysSerializedSize)
-          businessDays.foreach((_output__.writeEnumNoTag _).compose((_: io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.DayOfWeek).value))
+          businessDays.foreach((_output__.writeEnumNoTag).compose((_: io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.DayOfWeek).value))
         };
         businessPeriods.foreach { __v =>
           val __m = __v
@@ -3773,21 +3773,21 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.javaDescriptor.getNestedTypes().get(7)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.scalaDescriptor.nestedMessages(7)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-      var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+      var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
       (__number: @_root_.scala.unchecked) match {
         case 4 => __out = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.BusinessPeriod
         case 5 => __out = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.Holiday
       }
       __out
     }
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] =
-      Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] =
+      Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]](
         _root_.io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.BusinessPeriod,
         _root_.io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.Holiday,
         _root_.io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.LocalDate
       )
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = {
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = {
       (__fieldNumber: @_root_.scala.unchecked) match {
         case 3 => io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.DayOfWeek
       }
@@ -3889,8 +3889,8 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
         unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
         ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[BusinessPeriod] {
         @transient
-        private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-        private[this] def __computeSerializedSize(): _root_.scala.Int = {
+        private var __serializedSizeMemoized: _root_.scala.Int = 0
+        private def __computeSerializedSize(): _root_.scala.Int = {
           var __size = 0
           
           {
@@ -4000,9 +4000,9 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       }
       def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.javaDescriptor.getNestedTypes().get(0)
       def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.scalaDescriptor.nestedMessages(0)
-      def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-      lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-      def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+      def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+      lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+      def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
       lazy val defaultInstance = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.BusinessPeriod(
         `open` = "",
         close = ""
@@ -4030,8 +4030,8 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
         unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
         ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[Holiday] {
         @transient
-        private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-        private[this] def __computeSerializedSize(): _root_.scala.Int = {
+        private var __serializedSizeMemoized: _root_.scala.Int = 0
+        private def __computeSerializedSize(): _root_.scala.Int = {
           var __size = 0
           if (date.isDefined) {
             val __value = date.get
@@ -4134,16 +4134,16 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       }
       def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.javaDescriptor.getNestedTypes().get(1)
       def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.scalaDescriptor.nestedMessages(1)
-      def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-        var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+      def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+        var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
         (__number: @_root_.scala.unchecked) match {
           case 1 => __out = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.LocalDate
           case 2 => __out = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.BusinessPeriod
         }
         __out
       }
-      lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-      def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+      lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+      def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
       lazy val defaultInstance = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.Holiday(
         date = _root_.scala.None,
         businessPeriods = _root_.scala.Seq.empty
@@ -4173,8 +4173,8 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
         unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
         ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[LocalDate] {
         @transient
-        private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-        private[this] def __computeSerializedSize(): _root_.scala.Int = {
+        private var __serializedSizeMemoized: _root_.scala.Int = 0
+        private def __computeSerializedSize(): _root_.scala.Int = {
           var __size = 0
           
           {
@@ -4308,9 +4308,9 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       }
       def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.javaDescriptor.getNestedTypes().get(2)
       def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.scalaDescriptor.nestedMessages(2)
-      def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-      lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-      def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+      def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+      lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+      def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
       lazy val defaultInstance = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.BusinessCalendarDescriptor.LocalDate(
         year = 0,
         month = 0,
@@ -4373,8 +4373,8 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[MultiSeriesSourceDescriptor] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         
         {
@@ -4532,9 +4532,9 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.javaDescriptor.getNestedTypes().get(8)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.scalaDescriptor.nestedMessages(8)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = {
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = {
       (__fieldNumber: @_root_.scala.unchecked) match {
         case 2 => io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.SourceType
       }
@@ -4581,8 +4581,8 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[SourceDescriptor] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         
         {
@@ -4808,15 +4808,15 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.javaDescriptor.getNestedTypes().get(9)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.scalaDescriptor.nestedMessages(9)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-      var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+      var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
       (__number: @_root_.scala.unchecked) match {
         case 7 => __out = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.OneClickDescriptor
       }
       __out
     }
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = {
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = {
       (__fieldNumber: @_root_.scala.unchecked) match {
         case 2 => io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.SourceType
       }
@@ -4875,8 +4875,8 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[OneClickDescriptor] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         columns.foreach { __item =>
           val __value = __item
@@ -5000,9 +5000,9 @@ object FigureDescriptor extends scalapb.GeneratedMessageCompanion[io.deephaven.p
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.javaDescriptor.getNestedTypes().get(10)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.scalaDescriptor.nestedMessages(10)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
     lazy val defaultInstance = io.deephaven.proto.backplane.script.grpc.console.FigureDescriptor.OneClickDescriptor(
       columns = _root_.scala.Seq.empty,
       columnTypes = _root_.scala.Seq.empty,

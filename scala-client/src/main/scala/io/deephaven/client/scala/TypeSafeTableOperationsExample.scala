@@ -19,7 +19,7 @@ object TypeSafeTableOperationsExample {
    * After:  table.where("MedianAverageDailyVolume".isNotNull && "TargetEODDollars" > 0)
    */
   def basicFiltering(table: Table): Table = {
-    table.where("MedianAverageDailyVolume".isNotNull && "TargetEODDollars" > 0)
+    table.where(col("MedianAverageDailyVolume").isNotNull && col("TargetEODDollars") > 0)
   }
   
   /**
@@ -30,7 +30,7 @@ object TypeSafeTableOperationsExample {
    */
   def complexFiltering(table: Table): Table = {
     // Using operator precedence (requires careful parentheses)
-    table.where(("Foo" > "Bar") || ("Foo" > "Baz") || ("Foo".isNull && "Bar".isNotNull && "Baz".isNotNull))
+    table.where((col("Foo") > col("Bar")) || (col("Foo") > col("Baz")) || (col("Foo").isNull && col("Bar").isNotNull && col("Baz").isNotNull))
   }
   
   /**
@@ -39,12 +39,12 @@ object TypeSafeTableOperationsExample {
   def complexFilteringWithCombinators(table: Table): Table = {
     table.where(
       or(
-        "Foo" > "Bar",
-        "Foo" > "Baz",
+        col("Foo") > col("Bar"),
+        col("Foo") > col("Baz"),
         and(
-          "Foo".isNull,
-          "Bar".isNotNull,
-          "Baz".isNotNull
+          col("Foo").isNull,
+          col("Bar").isNotNull,
+          col("Baz").isNotNull
         )
       )
     )
@@ -58,8 +58,8 @@ object TypeSafeTableOperationsExample {
    */
   def columnUpdates(table: Table): Table = {
     table.update(
-      "NewColumn" := "Column1" + "Column2",
-      "Ratio" := "Column1" / "Column2"
+      col("NewColumn") := col("Column1") + col("Column2"),
+      col("Ratio") := col("Column1") / col("Column2")
     )
   }
   
@@ -71,10 +71,10 @@ object TypeSafeTableOperationsExample {
    */
   def aggregationUpdates(table: Table): Table = {
     table.update(
-      "MedianVolume" := "AverageDailyVolume".median(),      // Method syntax
-      "TotalValue" := sum("Value"),                         // Function syntax
-      "MaxPrice" := "Price".max(),                          // Method syntax
-      "MinPrice" := min("Price")                            // Function syntax
+      col("MedianVolume") := col("AverageDailyVolume").median(),      // Method syntax
+      col("TotalValue") := sum(col("Value")),                         // Function syntax
+      col("MaxPrice") := col("Price").max(),                          // Method syntax
+      col("MinPrice") := min(col("Price"))                            // Function syntax
     )
   }
   
@@ -84,13 +84,13 @@ object TypeSafeTableOperationsExample {
    * Before: table.view("Column1", "Column2", "NewColumn = Column1 + Column2")
    * After:  Type-safe column references and assignments
    */
-  def viewOperations(table: Table): Table = {
-    table.view(
-      "Column1",
-      "Column2",
-      "NewColumn" := "Column1" + "Column2"
-    )
-  }
+//  def viewOperations(table: Table): Table = {
+//    table.view(
+//      col("Column1"),
+//      col("Column2"),
+//      col("NewColumn") := col("Column1") + col("Column2")
+//    )
+//  }
   
   /**
    * Example 7: Conditional expressions
@@ -100,9 +100,9 @@ object TypeSafeTableOperationsExample {
    */
   def conditionalExpressions(table: Table): Table = {
     table.update(
-      "Status" := when("Value".isNull, "Unknown")
+      col("Status") := when(col("Value").isNull, "Unknown")
         .otherwise(
-          when("Value" > 100, "High").otherwise("Low")
+          when(col("Value") > 100, "High").otherwise("Low")
       )
     )
   }
@@ -115,10 +115,10 @@ object TypeSafeTableOperationsExample {
    */
   def functionCalls(table: Table): Table = {
     table.update(
-      "UpperName" := upper("Name"),
-      "AbsValue" := abs("Value"),
-      "SqrtValue" := sqrt("Value"),
-      "PowerValue" := pow("Value", 2)
+      col("UpperName") := upper(col("Name")),
+      col("AbsValue") := abs(col("Value")),
+      col("SqrtValue") := sqrt(col("Value")),
+      col("PowerValue") := pow(col("Value"), 2)
     )
   }
   
@@ -130,10 +130,10 @@ object TypeSafeTableOperationsExample {
    */
   def dateTimeOperations(table: Table): Table = {
     table.update(
-      "Year" := year("Date"),
-      "Month" := month("Date"),
-      "Day" := day("Date"),
-      "CurrentTime" := now()
+      col("Year") := year(col("Date")),
+      col("Month") := month(col("Date")),
+      col("Day") := day(col("Date")),
+      col("CurrentTime") := now()
     )
   }
   
@@ -145,7 +145,7 @@ object TypeSafeTableOperationsExample {
    */
   def methodCalls(table: Table): Table = {
     table.update(
-      "Result" := "Column".method("myMethod", "Arg1", "Arg2")
+      col("Result") := col("Column").method("myMethod", col("Arg1"), col("Arg2"))
     )
   }
   
@@ -156,13 +156,13 @@ object TypeSafeTableOperationsExample {
    */
   def fluentQueryBuilder(table: Table): Table = {
     from(table)
-      .where("MedianAverageDailyVolume".isNotNull && "TargetEODDollars" > 0)
+      .where(col("MedianAverageDailyVolume").isNotNull && col("TargetEODDollars") > 0)
       .update(
-        "MedianVolume" := "AverageDailyVolume".median(),
-        "TotalValue" := "Price" * "Volume"
+        col("MedianVolume") := col("AverageDailyVolume").median(),
+        col("TotalValue") := col("Price") * col("Volume")
       )
-      .view("Symbol", "MedianVolume", "TotalValue")
-      .sort("TotalValue")
+//      .view(col("Symbol"), col("MedianVolume"), col("TotalValue"))
+      .sort(col("TotalValue"))
       .head(100)
       .build()
   }
@@ -175,8 +175,8 @@ object TypeSafeTableOperationsExample {
    */
   def groupingAndSorting(table: Table): Table = {
     table
-      .groupBy("Category", "Region")
-      .sort("Value")
+      .groupBy(col("Category"), col("Region"))
+      .sort(col("Value"))
   }
   
   /**
@@ -186,8 +186,8 @@ object TypeSafeTableOperationsExample {
    */
   def mixedColumnReferences(table: Table): Table = {
     table.update(
-      "StringBased" := "Column1" + "Column2",                     // String-based (with implicit conversion)
-      col("ExplicitBased") := col("Column3") + col("Column4")      // Explicit col() calls
+      col("StringBased") := col("Column1") + col("Column2"),                     // String-based (with explicit conversion)
+      col("ExplicitBased") := col("Column3") + col("Column4")                    // Explicit col() calls
     )
   }
   
@@ -198,8 +198,8 @@ object TypeSafeTableOperationsExample {
    */
   def rawExpressions(table: Table): Table = {
     table.update(
-      "SimpleExpression" := "Column1" + "Column2",
-      "ComplexExpression" := raw("someComplexFunction(Column1, Column2, specificParameter)")
+      col("SimpleExpression") := col("Column1") + col("Column2"),
+      col("ComplexExpression") := raw("someComplexFunction(Column1, Column2, specificParameter)")
     )
   }
   
@@ -211,9 +211,9 @@ object TypeSafeTableOperationsExample {
   def nullHandling(table: Table): Table = {
     table.where(
       and(
-        "Column1".isNotNull,                    // Method syntax
-        isNotNull("Column2"),                   // Function syntax
-        !("Column3".isNull)                     // Negation syntax
+        col("Column1").isNotNull,                    // Method syntax
+        isNotNull(col("Column2")),                   // Function syntax
+        !(col("Column3").isNull)                     // Negation syntax
       )
     )
   }
@@ -225,10 +225,10 @@ object TypeSafeTableOperationsExample {
    */
   def literalComparisons(table: Table): Table = {
     table.where(
-      "IntColumn" > 100 &&                      // Int literal
-      "DoubleColumn" >= 3.14 &&                 // Double literal
-      "StringColumn" === "test" &&              // String literal
-      "BooleanColumn" === true                  // Boolean literal
+      col("IntColumn") > 100 &&                      // Int literal
+      col("DoubleColumn") >= 3.14 &&                 // Double literal
+      col("StringColumn") === "test" &&              // String literal
+      col("BooleanColumn") === true                  // Boolean literal
     )
   }
   
@@ -240,25 +240,25 @@ object TypeSafeTableOperationsExample {
   def tradingAnalysis(tickData: Table): Table = {
     from(tickData)
       .where(
-        "Price" > 0 &&
-        "Volume" > 0 &&
-        "Symbol".isNotNull
+        col("Price") > 0 &&
+        col("Volume") > 0 &&
+        col("Symbol").isNotNull
       )
       .update(
-        "DollarVolume" := "Price" * "Volume",
-        "PriceChange" := "Price" - "PrevPrice",
-        "PriceChangePercent" := ("Price" - "PrevPrice") / "PrevPrice" * 100
+        col("DollarVolume") := col("Price") * col("Volume"),
+        col("PriceChange") := col("Price") - col("PrevPrice"),
+        col("PriceChangePercent") := (col("Price") - col("PrevPrice")) / col("PrevPrice") * 100
       )
-      .view(
-        "Symbol",
-        "Price",
-        "Volume",
-        "DollarVolume",
-        "PriceChange",
-        "PriceChangePercent"
-      )
-      .where("DollarVolume" > 1000000)  // Filter for high-value trades
-      .sort("DollarVolume")
+//      .view(
+//        col("Symbol"),
+//        col("Price"),
+//        col("Volume"),
+//        col("DollarVolume"),
+//        col("PriceChange"),
+//        col("PriceChangePercent")
+//      )
+      .where(col("DollarVolume") > 1000000)  // Filter for high-value trades
+      .sort(col("DollarVolume"))
       .tail(50)  // Top 50 by dollar volume
       .build()
   }
@@ -270,8 +270,8 @@ object TypeSafeTableOperationsExample {
    */
   def errorHandling(table: Table): Table = {
     table.update(
-      "SafeRatio" := when("Denominator" === 0, 0.0).otherwise("Numerator" / "Denominator"),
-      "SafeLog" := when("Value" > 0, log("Value")).otherwise(Double.NaN)
+      col("SafeRatio") := when(col("Denominator") === 0, 0.0).otherwise(col("Numerator") / col("Denominator")),
+      col("SafeLog") := when(col("Value") > 0, log(col("Value"))).otherwise(Double.NaN)
     )
   }
 }

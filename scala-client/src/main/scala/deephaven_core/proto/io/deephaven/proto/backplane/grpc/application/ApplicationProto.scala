@@ -9,8 +9,8 @@ object ApplicationProto extends _root_.scalapb.GeneratedFileObject {
   lazy val dependencies: Seq[_root_.scalapb.GeneratedFileObject] = Seq(
     io.deephaven.proto.backplane.grpc.ticket.TicketProto
   )
-  lazy val messagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] =
-    Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
+  lazy val messagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] =
+    Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]](
       io.deephaven.proto.backplane.grpc.application.ListFieldsRequest,
       io.deephaven.proto.backplane.grpc.application.FieldsChangeUpdate,
       io.deephaven.proto.backplane.grpc.application.FieldInfo

@@ -10,8 +10,8 @@ object HierarchicaltableProto extends _root_.scalapb.GeneratedFileObject {
     io.deephaven.proto.backplane.grpc.table.TableProto,
     io.deephaven.proto.backplane.grpc.ticket.TicketProto
   )
-  lazy val messagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] =
-    Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
+  lazy val messagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] =
+    Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]](
       io.deephaven.proto.backplane.grpc.hierarchicaltable.RollupRequest,
       io.deephaven.proto.backplane.grpc.hierarchicaltable.RollupResponse,
       io.deephaven.proto.backplane.grpc.hierarchicaltable.TreeRequest,

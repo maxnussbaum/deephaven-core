@@ -17,7 +17,7 @@ final case class Diagnostic(
     data: _root_.scala.Option[_root_.com.google.protobuf.ByteString] = _root_.scala.None,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[Diagnostic] {
-    private[this] def tagsSerializedSize = {
+    private def tagsSerializedSize = {
       if (__tagsSerializedSizeField == 0) __tagsSerializedSizeField = {
         var __s: _root_.scala.Int = 0
         tags.foreach(__i => __s += _root_.com.google.protobuf.CodedOutputStream.computeEnumSizeNoTag(__i.value))
@@ -25,10 +25,10 @@ final case class Diagnostic(
       }
       __tagsSerializedSizeField
     }
-    @transient private[this] var __tagsSerializedSizeField: _root_.scala.Int = 0
+    @transient private var __tagsSerializedSizeField: _root_.scala.Int = 0
     @transient
-    private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-    private[this] def __computeSerializedSize(): _root_.scala.Int = {
+    private var __serializedSizeMemoized: _root_.scala.Int = 0
+    private def __computeSerializedSize(): _root_.scala.Int = {
       var __size = 0
       if (range.isDefined) {
         val __value = range.get
@@ -116,7 +116,7 @@ final case class Diagnostic(
       if (tags.nonEmpty) {
         _output__.writeTag(7, 2)
         _output__.writeUInt32NoTag(tagsSerializedSize)
-        tags.foreach((_output__.writeEnumNoTag _).compose((_: io.deephaven.proto.backplane.script.grpc.console.Diagnostic.DiagnosticTag).value))
+        tags.foreach((_output__.writeEnumNoTag).compose((_: io.deephaven.proto.backplane.script.grpc.console.Diagnostic.DiagnosticTag).value))
       };
       data.foreach { __v =>
         val __m = __v
@@ -260,19 +260,19 @@ object Diagnostic extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.b
   }
   def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = ConsoleProto.javaDescriptor.getMessageTypes().get(42)
   def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = ConsoleProto.scalaDescriptor.messages(42)
-  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
-    var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = {
+    var __out: _root_.scalapb.GeneratedMessageCompanion[?] = null
     (__number: @_root_.scala.unchecked) match {
       case 1 => __out = io.deephaven.proto.backplane.script.grpc.console.DocumentRange
       case 4 => __out = io.deephaven.proto.backplane.script.grpc.console.Diagnostic.CodeDescription
     }
     __out
   }
-  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] =
-    Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
+  lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] =
+    Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]](
       _root_.io.deephaven.proto.backplane.script.grpc.console.Diagnostic.CodeDescription
     )
-  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = {
+  def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = {
     (__fieldNumber: @_root_.scala.unchecked) match {
       case 2 => io.deephaven.proto.backplane.script.grpc.console.Diagnostic.DiagnosticSeverity
       case 7 => io.deephaven.proto.backplane.script.grpc.console.Diagnostic.DiagnosticTag
@@ -406,8 +406,8 @@ object Diagnostic extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.b
       unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
       ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[CodeDescription] {
       @transient
-      private[this] var __serializedSizeMemoized: _root_.scala.Int = 0
-      private[this] def __computeSerializedSize(): _root_.scala.Int = {
+      private var __serializedSizeMemoized: _root_.scala.Int = 0
+      private def __computeSerializedSize(): _root_.scala.Int = {
         var __size = 0
         
         {
@@ -493,9 +493,9 @@ object Diagnostic extends scalapb.GeneratedMessageCompanion[io.deephaven.proto.b
     }
     def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.Diagnostic.javaDescriptor.getNestedTypes().get(0)
     def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = io.deephaven.proto.backplane.script.grpc.console.Diagnostic.scalaDescriptor.nestedMessages(0)
-    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
-    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
-    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
+    def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[?] = throw new MatchError(__number)
+    lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] = Seq.empty
+    def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[?] = throw new MatchError(__fieldNumber)
     lazy val defaultInstance = io.deephaven.proto.backplane.script.grpc.console.Diagnostic.CodeDescription(
       href = ""
     )

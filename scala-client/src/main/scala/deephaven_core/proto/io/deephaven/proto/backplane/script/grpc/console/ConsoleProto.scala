@@ -10,8 +10,8 @@ object ConsoleProto extends _root_.scalapb.GeneratedFileObject {
     io.deephaven.proto.backplane.grpc.ticket.TicketProto,
     io.deephaven.proto.backplane.grpc.application.ApplicationProto
   )
-  lazy val messagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] =
-    Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]](
+  lazy val messagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]] =
+    Seq[_root_.scalapb.GeneratedMessageCompanion[? <: _root_.scalapb.GeneratedMessage]](
       io.deephaven.proto.backplane.script.grpc.console.GetConsoleTypesRequest,
       io.deephaven.proto.backplane.script.grpc.console.GetConsoleTypesResponse,
       io.deephaven.proto.backplane.script.grpc.console.StartConsoleRequest,

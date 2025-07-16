@@ -19,7 +19,7 @@ configurations {
 //evaluationDependsOn Docker.registryProject('scala')
 
 dependencies {
-    implementation 'org.scala-lang:scala3-library_3:3.7.1'
+    implementation 'org.scala-lang:scala3-library_3:3.4.3'
     implementation 'com.thesamet.scalapb:scalapb-runtime_3:0.11.17'
     implementation 'com.thesamet.scalapb:scalapb-runtime-grpc_3:0.11.17'
     implementation 'io.grpc:grpc-netty:1.73.0'
@@ -37,6 +37,7 @@ dependencies {
     testImplementation 'org.scalatest:scalatest_3:3.2.19'
     testImplementation 'org.scalatest:scalatest-funsuite_3:3.2.19'
     testImplementation 'junit:junit:4.13.2'
+    testImplementation project(":engine-test-utils")
 }
 
 def compare = tasks.register('compareProtobuf', DiffTask) {
@@ -49,6 +50,15 @@ def compare = tasks.register('compareProtobuf', DiffTask) {
         }
     }
     generateTask.set ':scala-client:updateProtobuf'
+}
+
+tasks.withType(ScalaCompile).configureEach {
+    scalaCompileOptions.additionalParameters = [
+            '-source:3.4-migration', // Enables Scala 3 migration mode
+            '-rewrite',              // Allows automatic rewrite
+            '-Xlint',                // Extra warnings
+            '-Ywarn-migration'       // Warn about breaking changes
+    ]
 }
 
 sourceSets.main.scala.srcDirs = ['src/main/scala', 'src/main/scala/deephaven_core/proto']

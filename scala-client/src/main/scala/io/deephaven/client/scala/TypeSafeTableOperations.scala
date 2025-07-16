@@ -75,14 +75,14 @@ class TypeSafeTableOperations(val table: Table) extends AnyVal {
    * Enhanced sort method with type-safe column references.
    */
   def sort(columns: TypeSafeColumn*): Table = {
-    table.sort(columns.map(_.name).toArray: _*)
+    table.sort(columns.map(_.name).toArray*)
   }
   
   /**
    * Enhanced sortDescending method with type-safe column references.
    */
   def sortDescending(columns: TypeSafeColumn*): Table = {
-    table.sortDescending(columns.map(_.name).toArray: _*)
+    table.sortDescending(columns.map(_.name).toArray*)
   }
 }
 
@@ -124,7 +124,7 @@ class TypeSafeColumn(val name: String) extends AnyVal {
   
   // Method calls
   def method(methodName: String, args: TypeSafeExpression*): TypeSafeExpression = {
-    TypeSafeExpression(Method.of(this.toExpression, methodName, args.map(_.toExpression): _*))
+    TypeSafeExpression(Method.of(this.toExpression, methodName, args.map(_.toExpression)*))
   }
   
   // Common aggregation functions as methods
@@ -183,6 +183,7 @@ case class TypeSafeExpression(expression: Expression) {
  */
 case class TypeSafeFilter(filter: Filter) {
   def toFilter: Filter = filter
+  def toExpression: Expression = filter
   
   // Logical operators
   def &&(other: TypeSafeFilter): TypeSafeFilter = 
@@ -208,10 +209,6 @@ object TypeSafeTableOperations {
   // Implicit conversion from Table to TypeSafeTableOperations
   implicit def tableToTypeSafe(table: Table): TypeSafeTableOperations = 
     new TypeSafeTableOperations(table)
-  
-  // String-based column references
-  implicit def stringToColumn(name: String): TypeSafeColumn = 
-    new TypeSafeColumn(name)
   
   // Column function
   def col(name: String): TypeSafeColumn = new TypeSafeColumn(name)
@@ -365,12 +362,12 @@ object TableOps {
     }
     
     def sort(columns: TypeSafeColumn*): TableQueryBuilder = {
-      currentTable = currentTable.sort(columns.map(_.name).toArray: _*)
+      currentTable = currentTable.sort(columns.map(_.name).toArray*)
       this
     }
     
     def sortDescending(columns: TypeSafeColumn*): TableQueryBuilder = {
-      currentTable = currentTable.sortDescending(columns.map(_.name).toArray: _*)
+      currentTable = currentTable.sortDescending(columns.map(_.name).toArray*)
       this
     }
     
