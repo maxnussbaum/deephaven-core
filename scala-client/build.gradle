@@ -36,8 +36,13 @@ dependencies {
 
     testImplementation 'org.scalatest:scalatest_3:3.2.19'
     testImplementation 'org.scalatest:scalatest-funsuite_3:3.2.19'
-    testImplementation 'junit:junit:4.13.2'
     testImplementation project(":engine-test-utils")
+
+    implementation("org.scalatestplus:junit-5-10_3:3.2.19.1")
+}
+
+test {
+    useJUnitPlatform()
 }
 
 def compare = tasks.register('compareProtobuf', DiffTask) {

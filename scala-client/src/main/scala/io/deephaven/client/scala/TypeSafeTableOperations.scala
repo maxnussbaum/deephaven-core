@@ -186,12 +186,15 @@ case class TypeSafeFilter(filter: Filter) {
   def toExpression: Expression = filter
   
   // Logical operators
+  @targetName("and")
   def &&(other: TypeSafeFilter): TypeSafeFilter = 
     TypeSafeFilter(Filter.and(this.toFilter, other.toFilter))
+  @targetName("or")
   def ||(other: TypeSafeFilter): TypeSafeFilter = 
     TypeSafeFilter(Filter.or(this.toFilter, other.toFilter))
+  @targetName("not")
   def unary_! : TypeSafeFilter = 
-    TypeSafeFilter(this.toFilter.invert())
+    TypeSafeFilter(Filter.not(this.toFilter))
 }
 
 /**
