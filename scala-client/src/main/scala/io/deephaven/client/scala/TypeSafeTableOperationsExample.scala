@@ -2,7 +2,7 @@ package io.deephaven.client.scala
 
 import io.deephaven.engine.table.Table
 import TypeSafeTableOperations._
-import TableOps._
+//import TableOps._
 
 /**
  * Comprehensive examples demonstrating the type-safe table operations DSL.
@@ -33,22 +33,22 @@ object TypeSafeTableOperationsExample {
     table.where((col("Foo") > col("Bar")) || (col("Foo") > col("Baz")) || (col("Foo").isNull && col("Bar").isNotNull && col("Baz").isNotNull))
   }
   
-  /**
-   * Example 3: Alternative complex filtering with explicit combinators
-   */
-  def complexFilteringWithCombinators(table: Table): Table = {
-    table.where(
-      or(
-        col("Foo") > col("Bar"),
-        col("Foo") > col("Baz"),
-        and(
-          col("Foo").isNull,
-          col("Bar").isNotNull,
-          col("Baz").isNotNull
-        )
-      )
-    )
-  }
+//  /**
+//   * Example 3: Alternative complex filtering with explicit combinators
+//   */
+//  def complexFilteringWithCombinators(table: Table): Table = {
+//    table.where(
+//      or(
+//        col("Foo") > col("Bar"),
+//        col("Foo") > col("Baz"),
+//        and(
+//          col("Foo").isNull,
+//          col("Bar").isNotNull,
+//          col("Baz").isNotNull
+//        )
+//      )
+//    )
+//  }
   
   /**
    * Example 4: Column updates with arithmetic operations
@@ -71,9 +71,9 @@ object TypeSafeTableOperationsExample {
    */
   def aggregationUpdates(table: Table): Table = {
     table.update(
-      col("MedianVolume") := col("AverageDailyVolume").median(),      // Method syntax
+      col("MedianVolume") := median(col("AverageDailyVolume")),      // Method syntax
       col("TotalValue") := sum(col("Value")),                         // Function syntax
-      col("MaxPrice") := col("Price").max(),                          // Method syntax
+      col("MaxPrice") := max(col("Price")),                          // Method syntax
       col("MinPrice") := min(col("Price"))                            // Function syntax
     )
   }
@@ -155,7 +155,7 @@ object TypeSafeTableOperationsExample {
    * Demonstrates chaining multiple operations in a readable way
    */
   def fluentQueryBuilder(table: Table): Table = {
-    from(table)
+    table
       .where(col("MedianAverageDailyVolume").isNotNull && col("TargetEODDollars") > 0)
       .update(
         col("MedianVolume") := col("AverageDailyVolume").median(),
@@ -164,7 +164,6 @@ object TypeSafeTableOperationsExample {
 //      .view(col("Symbol"), col("MedianVolume"), col("TotalValue"))
       .sort(col("TotalValue"))
       .head(100)
-      .build()
   }
   
   /**
@@ -210,11 +209,9 @@ object TypeSafeTableOperationsExample {
    */
   def nullHandling(table: Table): Table = {
     table.where(
-      and(
-        col("Column1").isNotNull,                    // Method syntax
-        isNotNull(col("Column2")),                   // Function syntax
-        !(col("Column3").isNull)                     // Negation syntax
-      )
+      col("Column1").isNotNull &&                   // Method syntax
+      isNotNull(col("Column2")) &&                  // Function syntax
+      !(col("Column3").isNull)                     // Negation syntax
     )
   }
   
@@ -238,7 +235,7 @@ object TypeSafeTableOperationsExample {
    * A realistic example showing a complete trading data analysis
    */
   def tradingAnalysis(tickData: Table): Table = {
-    from(tickData)
+    tickData
       .where(
         col("Price") > 0 &&
         col("Volume") > 0 &&
@@ -260,7 +257,7 @@ object TypeSafeTableOperationsExample {
       .where(col("DollarVolume") > 1000000)  // Filter for high-value trades
       .sort(col("DollarVolume"))
       .tail(50)  // Top 50 by dollar volume
-      .build()
+//      .build()
   }
   
   /**

@@ -325,65 +325,65 @@ object TypeSafeTableOperations {
 /**
  * Enhanced table operations with fluent API support.
  */
-object TableOps {
-  
-  /**
-   * Creates a fluent query builder for complex table operations.
-   */
-  def from(table: Table): TableQueryBuilder = new TableQueryBuilder(table)
-  
-  class TableQueryBuilder(private var currentTable: Table) {
-    
-    def where(filter: TypeSafeFilter): TableQueryBuilder = {
-      currentTable = currentTable.where(filter.toFilter)
-      this
-    }
-    
-    def update(assignments: TypeSafeSelectable*): TableQueryBuilder = {
-      currentTable = currentTable.update(assignments.map(_.toSelectable).asJava)
-      this
-    }
-    
-    def view(selections: TypeSafeSelectable*): TableQueryBuilder = {
-      currentTable = currentTable.view(selections.map(_.toSelectable).asJava)
-      this
-    }
-    
-    def updateView(assignments: TypeSafeSelectable*): TableQueryBuilder = {
-      currentTable = currentTable.updateView(assignments.map(_.toSelectable).asJava)
-      this
-    }
-    
-    def select(selections: TypeSafeSelectable*): TableQueryBuilder = {
-      currentTable = currentTable.select(selections.map(_.toSelectable).asJava)
-      this
-    }
-    
-    def groupBy(columns: TypeSafeColumn*): TableQueryBuilder = {
-      currentTable = currentTable.groupBy(columns.map(_.toColumnName).asJava)
-      this
-    }
-    
-    def sort(columns: TypeSafeColumn*): TableQueryBuilder = {
-      currentTable = currentTable.sort(columns.map(_.name).toArray*)
-      this
-    }
-    
-    def sortDescending(columns: TypeSafeColumn*): TableQueryBuilder = {
-      currentTable = currentTable.sortDescending(columns.map(_.name).toArray*)
-      this
-    }
-    
-    def head(size: Long): TableQueryBuilder = {
-      currentTable = currentTable.head(size)
-      this
-    }
-    
-    def tail(size: Long): TableQueryBuilder = {
-      currentTable = currentTable.tail(size)
-      this
-    }
-    
-    def build(): Table = currentTable
-  }
-}
+//object TableOps {
+//
+//  /**
+//   * Creates a fluent query builder for complex table operations.
+//   */
+//  def from(table: Table): TableQueryBuilder = new TableQueryBuilder(table)
+//
+//  class TableQueryBuilder(private var currentTable: Table) {
+//
+//    def where(filter: TypeSafeFilter): TableQueryBuilder = {
+//      currentTable = currentTable.where(filter.toFilter)
+//      this
+//    }
+//
+//    def update(assignments: TypeSafeSelectable*): TableQueryBuilder = {
+//      currentTable = currentTable.update(assignments.map(_.toSelectable).asJava)
+//      this
+//    }
+//
+//    def view(selections: TypeSafeSelectable*): TableQueryBuilder = {
+//      currentTable = currentTable.view(selections.map(_.toSelectable).asJava)
+//      this
+//    }
+//
+//    def updateView(assignments: TypeSafeSelectable*): TableQueryBuilder = {
+//      currentTable = currentTable.updateView(assignments.map(_.toSelectable).asJava)
+//      this
+//    }
+//
+//    def select(selections: TypeSafeSelectable*): TableQueryBuilder = {
+//      currentTable = currentTable.select(selections.map(_.toSelectable).asJava)
+//      this
+//    }
+//
+//    def groupBy(columns: TypeSafeColumn*): TableQueryBuilder = {
+//      currentTable = currentTable.groupBy(columns.map(_.toColumnName).asJava)
+//      this
+//    }
+//
+//    def sort(columns: TypeSafeColumn*): TableQueryBuilder = {
+//      currentTable = currentTable.sort(columns.map(_.name).toArray*)
+//      this
+//    }
+//
+//    def sortDescending(columns: TypeSafeColumn*): TableQueryBuilder = {
+//      currentTable = currentTable.sortDescending(columns.map(_.name).toArray*)
+//      this
+//    }
+//
+//    def head(size: Long): TableQueryBuilder = {
+//      currentTable = currentTable.head(size)
+//      this
+//    }
+//
+//    def tail(size: Long): TableQueryBuilder = {
+//      currentTable = currentTable.tail(size)
+//      this
+//    }
+//
+//    def build(): Table = currentTable
+//  }
+//}

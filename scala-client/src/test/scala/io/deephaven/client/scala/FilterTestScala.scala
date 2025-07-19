@@ -216,6 +216,8 @@ class FilterTestScala extends AnyFunSuite with Matchers {
     visitor.visit(null.asInstanceOf[Method])
     visitor.visit(false)
     visitor.visit(null.asInstanceOf[RawString])
+    visitor.visit(null.asInstanceOf[FilterBarrier])
+    visitor.visit(null.asInstanceOf[FilterRespectsBarrier])
   }
 
   private object FilterSpecificString extends Filter.Visitor[String] {
@@ -231,6 +233,8 @@ class FilterTestScala extends AnyFunSuite with Matchers {
     override def visit(method: Method): String = Strings.of(method)
     override def visit(literal: Boolean): String = Strings.of(literal)
     override def visit(rawString: RawString): String = Strings.of(rawString)
+    override def visit(barrier: io.deephaven.api.filter.FilterBarrier): String = Strings.of(barrier)
+    override def visit(respectsBarrier: io.deephaven.api.filter.FilterRespectsBarrier): String = Strings.of(respectsBarrier)
   }
 
   private class CountingVisitor extends Filter.Visitor[CountingVisitor] {
@@ -248,6 +252,8 @@ class FilterTestScala extends AnyFunSuite with Matchers {
     override def visit(method: Method): CountingVisitor = { count += 1; this }
     override def visit(literal: Boolean): CountingVisitor = { count += 1; this }
     override def visit(rawString: RawString): CountingVisitor = { count += 1; this }
+    override def visit(barrier: io.deephaven.api.filter.FilterBarrier): CountingVisitor = { count += 1; this }
+    override def visit(respectsBarrier: io.deephaven.api.filter.FilterRespectsBarrier): CountingVisitor  = { count += 1; this }
   }
 
   object Examples extends Filter.Visitor[Unit] {
@@ -321,6 +327,14 @@ class FilterTestScala extends AnyFunSuite with Matchers {
       out.add(RawString.of("Foo > Bar"))
       out.add(RawString.of("Foo >= Bar + 42"))
       out.add(RawString.of("aoeuaoeu"))
+    }
+
+    override def visit(barrier: FilterBarrier): Unit = {
+      out.add(Function.of("my_serial_function", FOO.toExpression).withBarriers("TEST_BARRIER"))
+    }
+
+    override def visit(respectsBarrier: FilterRespectsBarrier): Unit = {
+      out.add(Function.of("my_serial_function", FOO.toExpression).respectsBarriers("TEST_BARRIER"))
     }
   }
 }
